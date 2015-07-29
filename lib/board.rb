@@ -1,15 +1,17 @@
-class Board
+class Board (:player) 
 
 attr_accessor :ships
 attr_accessor :placed_ships
 
   def initialize
     @ships = []
-		@placed_ships = []
+	@placed_ships = []
   end
 
-	def place (ship, position, heading)
-    @ships << [ship, position, heading]
+
+	def place 
+		@player = :player
+		@ships << @player
 	end
 
 end
