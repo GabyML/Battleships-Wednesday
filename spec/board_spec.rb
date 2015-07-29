@@ -2,11 +2,18 @@ require 'board'
 
 describe Board do 
 
-	let(:ship) {double(:ship, {size: 1, position: 'A1', heading: 'N'})}
+	let(:ship) {double(:ship, {size: 3, position: 'A1', heading: 'N'})}
 
-	it 'can place a ship' do
-		expect(subject).to receive(:place).with(ship.size, ship.position, ship.heading)
-	end
+	it { is_expected.to respond_to(:place).with(3).argument }
 
-	
+  describe "#place" do
+     it "can put a ship onto the board" do
+        subject.place(ship, ship.position, ship.heading)
+        arr = [ship, ship.position, ship.heading]
+        expect(subject.ships).to include(arr)
+      end
+
+
+  end
+
 end
