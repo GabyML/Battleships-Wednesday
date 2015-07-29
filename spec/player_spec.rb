@@ -13,15 +13,14 @@ describe Player do
     # before (:example) do
     #
     # end
+      let(:ship) {double(:ship)}
+      let(:board) {double(:board, {ships: [ship, 'position', 'heading']})}
 
     it 'should send a ship to the board' do
-      board = double()
       # board.stub(:ships) { [@ship, @position, @heading]}
-      allow(board).to receive(:ships).and_return([])
-      subject.send(@ship, @position, @heading)
-      expect(board.ships).to include(@ship, @position, @heading)
+      subject.send(ship, 'position', 'heading', board)
+      expect(board.ships).to include([ship, 'position', 'heading'])
     end
 
   end
-  xit ''
 end
